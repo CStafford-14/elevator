@@ -1,0 +1,51 @@
+div, body, html, svg {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	--elevator-color: #636363;
+	--elevator-border-color: #545454;
+	--elevator-border-width: 5px;
+	--elevator-panel-width: 200px;
+}
+
+h1 {
+	font-size: 30px;
+}
+
+.divider {
+	height: 100px;
+	width: 100vw;
+	background-color: #272727;
+	display: flex;
+	justify-content: space-around;
+}
+
+.floor {
+	height: 100vh;
+	width: 100vw;
+}
+
+#panel-left {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: var(--elevator-panel-width);
+	background-color: var(--elevator-color);
+	border-color: var(--elevator-border-color);
+	border-width: var(--elevator-border-width);
+}
+#door-left {
+}
+#door-right {
+}
+#panel-right {
+	position: fixed;
+	right: 0;
+	top: 0;
+	height: 100vh;
+	width: var(--elevator-panel-width);
+	background-color: var(--elevator-color);
+	border-color: var(--elevator-border-color);
+	border-width: var(--elevator-border-width);
+}
