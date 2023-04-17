@@ -6,18 +6,36 @@ div, body, html, svg {
 	--elevator-border-color: #545454;
 	--elevator-border-width: 5px;
 	--elevator-panel-width: 200px;
+	overflow: hidden;
 }
 
 h1 {
 	font-size: 30px;
 }
 
+#wrapper {
+	width: calc(100% - 400px);
+	padding: 10px;
+	transition: all 0.75s;
+	position: relative;
+	left: 200px
+}
+
+#wrapper.open {
+	width: 100vw !important;
+	left: 10px !important
+	
+}
+
 .divider {
 	height: 100px;
-	width: 100vw;
+	width: 100%;
 	background-color: #272727;
 	display: flex;
 	justify-content: space-around;
+	position: absolute;
+    	left: 0;
+    	margin-top: 100px;
 }
 
 .floor {
@@ -34,10 +52,34 @@ h1 {
 	background-color: var(--elevator-color);
 	border-color: var(--elevator-border-color);
 	border-width: var(--elevator-border-width);
+	transition: all 0.75s;
+	z-index: 2;
 }
 #door-left {
+    width: calc(50vw - 10px);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(100,100,100,.25);
+    border-right-style: solid;
+    border-color: var(--elevator-border-color);
+    border-width: 10px;
+	transition: all 2.75s;
+	z-index: 1;
 }
 #door-right {
+    width: calc(50vw - 10px);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(100,100,100,.25);
+    border-left-style: solid;
+    border-color: var(--elevator-border-color);
+    border-width: 10px;
+	transition: all 2.75s;
+	z-index: 2;
 }
 #panel-right {
 	position: fixed;
@@ -48,4 +90,14 @@ h1 {
 	background-color: var(--elevator-color);
 	border-color: var(--elevator-border-color);
 	border-width: var(--elevator-border-width);
+	transition: all 0.75s;
+	z-index: 5;
+}
+
+.dr-open{
+	right: -100% !important;
+}
+
+.dl-open{
+	left: -100% !important;
 }
