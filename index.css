@@ -15,7 +15,7 @@ h1 {
 
 #wrapper {
 	width: calc(100% - 400px);
-	padding: 10px;
+	padding: 0px;
 	transition: all 0.75s;
 	position: relative;
 	left: 200px
@@ -33,7 +33,7 @@ h1 {
 	background-color: #272727;
 	display: flex;
 	justify-content: space-around;
-	position: absolute;
+	position: relative;
     	left: 0;
     	margin-top: 100px;
 }
@@ -52,7 +52,7 @@ h1 {
 	background-color: var(--elevator-color);
 	border-color: var(--elevator-border-color);
 	border-width: var(--elevator-border-width);
-	transition: all 0.75s;
+	transition: left 0.75s;
 	z-index: 2;
 }
 #door-left {
@@ -65,7 +65,7 @@ h1 {
     border-right-style: solid;
     border-color: var(--elevator-border-color);
     border-width: 10px;
-	transition: all 2.75s;
+	transition: left 2.75s;
 	z-index: 1;
 }
 #door-right {
@@ -78,7 +78,7 @@ h1 {
     border-left-style: solid;
     border-color: var(--elevator-border-color);
     border-width: 10px;
-	transition: all 2.75s;
+	transition: right 2.75s;
 	z-index: 2;
 }
 #panel-right {
@@ -90,14 +90,14 @@ h1 {
 	background-color: var(--elevator-color);
 	border-color: var(--elevator-border-color);
 	border-width: var(--elevator-border-width);
-	transition: all 0.75s;
+	transition: right 0.75s;
 	z-index: 5;
 }
 
-.dr-open{
+.dr-open {
 	right: -100% !important;
 }
 
-.dl-open{
+.dl-open {
 	left: -100% !important;
 }

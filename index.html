@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Elevator</title>
 		<link rel="stylesheet" href="index.css" type="text/css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<div id="panel-left"></div>
@@ -47,4 +48,78 @@
 		<div id="door-right"></div>
 		<div id="panel-right"></div>
 	</body>
+	<script>
+		var doorState = "closed";
+		var elevatorState = "stopped";
+		var navState = "elevator";
+
+		function openDoors(){
+			if (elevatorState == "stopped") {
+				document.getElementById("door-left").classList.add("dl-open");
+				document.getElementById("door-right").classList.add("dr-open");
+				doorState = "open";
+			};
+		};
+
+		function closeDoors(){
+			if (navState == "elevator") {
+				document.getElementById("door-left").classList.remove("dl-open");
+				document.getElementById("door-right").classList.remove("dr-open");
+				doorState = "closed";
+			};
+		};
+
+		function openEverything(){
+			if (doorState == "open") {
+				document.getElementById("panel-left").classList.add("dl-open");
+				document.getElementById("panel-right").classList.add("dr-open");
+				document.getElementById("wrapper").classList.add("open");
+				navState = "open";
+			} else {
+				if (elevatorState == "stopped"){
+					openDoors();
+					setTimeout(() => {  openEverything(); }, 500);
+				};
+			};
+		};
+
+		function closeEverything(){
+			if (navState == "open") {
+				document.getElementById("panel-left").classList.remove("dl-open");
+				document.getElementById("panel-right").classList.remove("dr-open");
+				document.getElementById("wrapper").classList.remove("open");
+				navState = "elevator";
+			};
+		};
+
+		function floor(floor){
+			query = document.getElementById(floor);
+
+			pixel = getOffset(query).top;
+    			window.scroll({
+  				top: pixel,
+  				left: 0,
+  				behavior: "smooth",
+			});
+		};
+
+		function triggerMove(request){
+			if (doorState == "closed"){
+				setTimeout(() => {  floor(request); }, 2000);
+				setTimeout(() => {  openDoors(); }, 3000);
+			} else {
+				closeDoors();
+				setTimeout(() => {  floor(request); }, 5000);
+				setTimeout(() => {  openDoors(); }, 6000);
+			};
+		};
+
+		function getOffset(el) {
+		  const rect = el.getBoundingClientRect();
+		  return {
+		    left: rect.left + window.scrollX,
+		    top: rect.top + window.scrollY
+		  };
+		};
+	</script>
 </html>
